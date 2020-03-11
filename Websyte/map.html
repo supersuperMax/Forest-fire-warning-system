@@ -7,5 +7,34 @@
 </head>
 <body class="main">
 <h1>Привет, мир!</h1>
+
+<p id ="sensor"></p>
+
+<script type="text/javascript">
+	var HttpClient = function() {
+    this.get = function(aUrl, aCallback) {
+        var anHttpRequest = new XMLHttpRequest();
+        anHttpRequest.onreadystatechange = function() { 
+            if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                aCallback(anHttpRequest.responseText);
+        }
+
+        anHttpRequest.open( "GET", aUrl, true );            
+        anHttpRequest.send( null );
+    }
+}
+
+var client = new HttpClient();
+client.get('/sensor', function(response) {
+     var myObj, txt = "";
+  myObj = JSON.parse(this.responseText);
+      txt += "<table border='1'>"
+      for (x in myObj) {
+        txt += "<tr><td>" + myObj[x].name + "</td></tr>";
+      }
+      txt += "</table>"    
+      document.getElementById("sensor").innerHTML = txt;
+});
+</script>
 </body>
 </html>

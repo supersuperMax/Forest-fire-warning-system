@@ -24,7 +24,7 @@
 
 var client = new HttpClient();
 client.get('/sensor', function(response) {
-document.getElementById("sensor").innerHTML = this.responseText;
+document.getElementById("sensor").innerHTML = response;
 });
 </script>
 </body>

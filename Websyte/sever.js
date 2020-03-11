@@ -3,7 +3,7 @@ const fs = require('fs');
 const app = express();
 app.get('/', function (req, res) { 
   
-fs.readFile('sensor.json', (err, data) => {
+fs.readFile('map.html', (err, data) => {
      if(err) throw err;
      res.send(data);
 });

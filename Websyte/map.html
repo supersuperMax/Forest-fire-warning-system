@@ -23,8 +23,8 @@
 }
 
 var client = new HttpClient();
-client.get('/sensor/', function(response) {
-document.getElementById("sensor").innerHTML = this.responseT;
+client.get('/sensor', function(response) {
+document.getElementById("sensor").innerHTML = this.responseText;
 });
 </script>
 </body>

@@ -24,14 +24,7 @@
 
 var client = new HttpClient();
 client.get('/sensor', function(response) {
-     var myObj, txt = "";
-  myObj = JSON.parse(this.responseText);
-      txt += "<table border='1'>"
-      for (x in myObj) {
-        txt += "<tr><td>" + myObj[x].name + "</td></tr>";
-      }
-      txt += "</table>"    
-      document.getElementById("sensor").innerHTML = txt;
+document.getElementById("sensor").innerHTML = this.responseT;
 });
 </script>
 </body>

@@ -5,6 +5,8 @@ app.get('/', function (req, res) {
   
 fs.readFile('map.html', (err, data) => {
      if(err) throw err;
+     res.set('Content-Type', 'text/html; charset=utf-8');
+     res.set('Access-Control-Allow-Origin', '*');
      res.send(data);
 });
 } );

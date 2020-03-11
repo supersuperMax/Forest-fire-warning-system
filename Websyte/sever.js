@@ -6,4 +6,9 @@ var path = require("path");
 app.get('/', function (req, res) { 
     res.sendFile(path.join(__dirname + '/map.html'));
 } );
+
+app.get('/sensor', function (req, res) { 
+    res.sendFile(path.join(__dirname + '/sensor.json'));
+} );
+
 app.listen(3000);

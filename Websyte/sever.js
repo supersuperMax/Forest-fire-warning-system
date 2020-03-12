@@ -13,6 +13,10 @@ app.get('/sensor', function (req, res) {
 } );
 
 app.post('/sensor', function (req, res) {
+	
+	console.log('receiving data ...');
+    console.log('body is ',req.body);
+
     fs.writeFile('sensor.json', req.body, (err) => {
     if(err) res.send(500);
       else res.send(200);

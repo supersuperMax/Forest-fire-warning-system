@@ -1,5 +1,11 @@
-.main h1 {
-	color: red;
+.main h1{
+	color:  #979b9c;
 	font-family: fantasy;
-	font-size: 35px
+	font-size: 35px;
+    text-align: center;
+}
+
+.main p {
+	color: blue;
+	font-size: 15px;
 }

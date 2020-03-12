@@ -2,11 +2,9 @@ const express = require('express');
 const fs = require('fs');
 const app = express();
 var path = require("path");
+var bodyParser = require('body-parser');
 
-app.configure(function(){
-  app.use(express.bodyParser());
-  app.use(app.router);
-});
+app.use(bodyParser.json());
 
 app.get('/', function (req, res) { 
     res.sendFile(path.join(__dirname + '/map.html'));

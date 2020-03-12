@@ -20,7 +20,7 @@ app.post('/sensor', function (req, res) {
 	console.log('receiving data ...');
     console.log('body is ',req.body);
 
-    fs.writeFile('sensor.json', req.body, (err) => {
+    fs.writeFile('sensor.json', JSON.stringify(req.body), (err) => {
     if(err) res.sendStatus(500);
       else res.sendStatus(200);
 } );

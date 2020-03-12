@@ -5,7 +5,7 @@ var path = require("path");
 
 app.get('/', function (req, res) { 
     res.sendFile(path.join(__dirname + '/map.html'));
-    res.sendFile(path.join(__dirname + '/map_code.js'));//
+    //res.sendFile(path.join(__dirname + '/map_code.js'));//
 } );
 
 app.get('/sensor', function (req, res) { 

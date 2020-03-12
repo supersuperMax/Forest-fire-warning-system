@@ -3,6 +3,11 @@ const fs = require('fs');
 const app = express();
 var path = require("path");
 
+app.configure(function(){
+  app.use(express.bodyParser());
+  app.use(app.router);
+});
+
 app.get('/', function (req, res) { 
     res.sendFile(path.join(__dirname + '/map.html'));
     //res.sendFile(path.join(__dirname + '/map_code.js'));//
@@ -18,8 +23,8 @@ app.post('/sensor', function (req, res) {
     console.log('body is ',req.body);
 
     fs.writeFile('sensor.json', req.body, (err) => {
-    if(err) res.send(500);
-      else res.send(200);
+    if(err) res.sendStatus(500);
+      else res.sendStatus(200);
 } );
 } );
 

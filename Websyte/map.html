@@ -68,6 +68,10 @@ function initMap() {
 
 function addMarker(sensor) {
   let url = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
+  switch (sensor.status) {
+  	case 0: url = "http://maps.google.com/mapfiles/ms/icons/red-dot.png"; break;
+    case 1: url = "http://maps.google.com/mapfiles/ms/icons/green-dot.png"; break;
+  }
 
   let marker = new google.maps.Marker({
     map: map,

@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">	
-</head>
-<body class="main">
-<h1>Привет, мир!</h1>
-
-<p id ="sensor"></p>
-
-<script src="map_code.js">
-	/*var HttpClient = function() {
+var HttpClient = function() {
     this.get = function(aUrl, aCallback) {
         var anHttpRequest = new XMLHttpRequest();
         anHttpRequest.onreadystatechange = function() { 
@@ -25,7 +14,4 @@
 var client = new HttpClient();
 client.get('/sensor', function(response) {
 document.getElementById("sensor").innerHTML = response;
-});*/
-</script>
-</body>
-</html>
+});

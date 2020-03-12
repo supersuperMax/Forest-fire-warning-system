@@ -61,7 +61,7 @@ function initMap() {
    client.get('/sensor', function(response) {
    document.getElementById("sensor").innerHTML = response;
    
-   JSON.parse(response).forEach(addMarker);
+   JSON.parse(response).sensors.forEach(addMarker);
    
    });
 }

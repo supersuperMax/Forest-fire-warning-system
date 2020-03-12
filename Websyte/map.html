@@ -30,7 +30,6 @@
 <body class="main">
 <h1>Привет, мир!</h1>
 
-<p id ="sensor"></p>
 <div id="map"></div>
 
 <script type="text/javascript">
@@ -59,8 +58,6 @@ function initMap() {
     center: myLatLng
   });
    client.get('/sensor', function(response) {
-   document.getElementById("sensor").innerHTML = response;
-   
    JSON.parse(response).sensors.forEach(addMarker);
    
    });

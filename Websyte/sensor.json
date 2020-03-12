@@ -1,20 +1,20 @@
 {
-	"sensors": [
-	{
-"status": 1,
-"position" : {
-  "lat": 59.863299,
-  "lng":74.500394
-},
-"label":  "20:00",
-},
-{
-"status": 0,
-"position" : {
-  "lat": 59.963229,
-  "lng":74.980324
-},
-"label":  "13:00",
-}
-]
+   "sensors":[
+      {
+         "status":1,
+         "position":{
+            "lat":59.863299,
+            "lng":74.500394
+         },
+         "label":"20:00"
+      },
+      {
+         "status":0,
+         "position":{
+            "lat":59.963229,
+            "lng":74.980324
+         },
+         "label":"13:00"
+      }
+   ]
 }

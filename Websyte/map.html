@@ -48,24 +48,37 @@
 }
 
 var client = new HttpClient();
-client.get('/sensor', function(response) {
-document.getElementById("sensor").innerHTML = response;
-});
+
+var map;
 
 function initMap() {
   var myLatLng = {lat:59.6922455, lng: 75.1798578};
 
-  var map = new google.maps.Map(document.getElementById('map'), {
+   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 8.74,
     center: myLatLng
   });
+   client.get('/sensor', function(response) {
+   document.getElementById("sensor").innerHTML = response;
+   
+   JSON.parse(response).forEach(addMarker);
+   
+   });
+}
 
-  var marker = new google.maps.Marker({
-    position: myLatLng,
+function addMarker(sensor) {
+  let url = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
+
+  let marker = new google.maps.Marker({
     map: map,
-    title: 'Hello World!'
+    position: sensor.position,
+    label: sensor.label,    
+icon: {
+      url: url
+    }
   });
 }
+
 </script>
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBTUyMLPdaeTdRFQR1ji7ukkwaod524hs&callback=initMap">

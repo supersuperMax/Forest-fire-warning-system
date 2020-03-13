@@ -7,11 +7,10 @@ var bodyParser = require('body-parser');
 var gulp = require('gulp');
 var replace = require('gulp-replace');
 
-gulp.task('build', function(){
   gulp.src([__dirname + '/map.html'])
     .pipe(replace('GOOGLE_API_KEY', myEnv.GOOGLE_API_KEY))
     .pipe(gulp.dest(__dirname + '/build/'));
-});
+
 
 app.use(bodyParser.json());
 

@@ -1,13 +1,20 @@
 const express = require('express');
 const fs = require('fs');
 const app = express();
+const myEnv = require('./prod-env')
 var path = require("path");
 var bodyParser = require('body-parser');
+
+gulp.task('build', function(){
+  gulp.src(['map.html'])
+    .pipe(replace('MY_API_KEY', myEnv.MY_API_KEY))
+    .pipe(gulp.dest('build/'));
+});
 
 app.use(bodyParser.json());
 
 app.get('/', function (req, res) { 
-    res.sendFile(path.join(__dirname + '/map.html'));
+    res.sendFile(path.join(__dirname + '/build/map.html'));
     //res.sendFile(path.join(__dirname + '/map_code.js'));//
 } );
 

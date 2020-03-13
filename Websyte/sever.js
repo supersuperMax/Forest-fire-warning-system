@@ -8,9 +8,9 @@ var gulp = require('gulp');
 var replace = require('gulp-replace');
 
 gulp.task('build', function(){
-  gulp.src(['map.html'])
+  gulp.src([__dirname + '/map.html'])
     .pipe(replace('GOOGLE_API_KEY', myEnv.GOOGLE_API_KEY))
-    .pipe(gulp.dest('build/'));
+    .pipe(gulp.dest(__dirname + '/build/'));
 });
 
 app.use(bodyParser.json());

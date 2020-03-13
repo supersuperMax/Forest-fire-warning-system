@@ -1,7 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const app = express();
-const myEnv = require('./prod-env')
+const myEnv = require('./prod-env.json')
 var path = require("path");
 var bodyParser = require('body-parser');
 var gulp = require('gulp');
@@ -9,7 +9,7 @@ var replace = require('gulp-replace');
 
 gulp.task('build', function(){
   gulp.src(['map.html'])
-    .pipe(replace('MY_API_KEY', myEnv.MY_API_KEY))
+    .pipe(replace('GOOGLE_API_KEY', myEnv.GOOGLE_API_KEY))
     .pipe(gulp.dest('build/'));
 });
 

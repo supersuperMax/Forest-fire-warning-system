@@ -4,6 +4,8 @@ const app = express();
 const myEnv = require('./prod-env')
 var path = require("path");
 var bodyParser = require('body-parser');
+var gulp = require('gulp');
+var replace = require('gulp-replace');
 
 gulp.task('build', function(){
   gulp.src(['map.html'])

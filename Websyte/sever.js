@@ -11,6 +11,8 @@ var replace = require('gulp-replace');
     .pipe(replace('GOOGLE_API_KEY', myEnv.GOOGLE_API_KEY))
     .pipe(gulp.dest(__dirname + '/build/'));
 
+gulp.src([__dirname + '/sensor.json'])
+    .pipe(gulp.dest(__dirname + '/build/'));
 
 app.use(bodyParser.json());
 
@@ -20,7 +22,7 @@ app.get('/', function (req, res) {
 } );
 
 app.get('/sensor', function (req, res) { 
-    res.sendFile(path.join(__dirname + '/sensor.json'));
+    res.sendFile(path.join(__dirname + '/build/sensor.json'));
 } );
 
 app.post('/sensor', function (req, res) {
@@ -28,7 +30,7 @@ app.post('/sensor', function (req, res) {
 	console.log('receiving data ...');
     console.log('body is ',req.body);
 
-    fs.writeFile('sensor.json', JSON.stringify(req.body), (err) => {
+    fs.writeFile('build/sensor.json', JSON.stringify(req.body), (err) => {
     if(err) res.sendStatus(500);
       else res.sendStatus(200);
 } );

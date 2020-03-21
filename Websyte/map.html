@@ -48,7 +48,7 @@
 }
 
 var client = new HttpClient();
-
+var markers = [];
 var map;
 
 function initMap() {
@@ -58,17 +58,34 @@ function initMap() {
     zoom: 8.74,
     center: myLatLng
   });
-   client.get('/sensor', function(response) {
+   update();
+}
+
+function update () {
+  client.get('/sensor', function(response) {
+   clearMarkers();
    JSON.parse(response).sensors.forEach(addMarker);
-   
+   setTimeout(update, 5000);
    });
 }
+
+function setMapOnAll(map) {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].setMap(map);
+        }
+      }
+
+function clearMarkers() {
+        setMapOnAll(null);
+      }
 
 function addMarker(sensor) {
   let url = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
   switch (sensor.status) {
-  	case 0: url = "http://maps.google.com/mapfiles/ms/icons/red-dot.png"; break;
-    case 1: url = "http://maps.google.com/mapfiles/ms/icons/green-dot.png"; break;
+  	case 0: url = "http://maps.google.com/mapfiles/ms/icons/red-dot.png"; 
+    break;
+    case 1: url = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
+    break;
   }
 
   let marker = new google.maps.Marker({
@@ -79,6 +96,7 @@ icon: {
       url: url
     }
   });
+   markers.push(marker);
 }
 
 </script>

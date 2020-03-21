@@ -65,7 +65,7 @@ function update () {
   client.get('/sensor', function(response) {
    clearMarkers();
    JSON.parse(response).sensors.forEach(addMarker);
-   setTimeout(update, 5000);
+   setTimeout(update, 1000);
    });
 }
 

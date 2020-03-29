@@ -25,11 +25,53 @@
         line-height: 30px;
         padding-left: 10px;
       }
+
+      nav {
+  width: 100%;
+  height: 30%;
+  background-color: #121716;  
+}
+ul {
+  width: 100%;
+}
+
+li {
+  display: inline-block;
+  padding: 25px;    
+  position: relative;
+  transition: 0.5s;
+  border: 2px solid;
+  border-color: transparent;
+  border-radius: 5px;
+}
+
+li:hover {
+  background-color: #303837;  
+}
+
+ a {
+  text-decoration: none;
+  color: #d3ddde;
+  font-size: 25px;
+  font-family: arial;
+    transition: 0.5s;
+}
+
+a:hover {
+  color: #3dc7d9;
+}
     </style>
 
 </head>
 <body class="main">
-<h1>Привет, мир!</h1>
+
+<nav>
+  <ul>
+    <li><a href="" > gjhhjgjh</a></li>
+    <li><a href=""> пункт2</a></li>
+    <li><a href=""> пункт3</a></li>
+  </ul>
+</nav>
 
 <div id="map"></div>
 
@@ -50,6 +92,7 @@
 var client = new HttpClient();
 var markers = [];
 var map;
+var last_response = " ";
 
 function initMap() {
   var myLatLng = {lat:59.6922455, lng: 75.1798578};
@@ -63,9 +106,12 @@ function initMap() {
 
 function update () {
   client.get('/sensor', function(response) {
+   setTimeout(update, 1000);
+   if (last_response === response) return;
+   last_response = response;
    clearMarkers();
    JSON.parse(response).sensors.forEach(addMarker);
-   setTimeout(update, 1000);
+   
    });
 }
 
